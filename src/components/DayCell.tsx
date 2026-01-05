@@ -1,12 +1,13 @@
 interface DayCellProps {
-    date: string
+    date: Date
 }
 
 function DayCell(props: DayCellProps) {
+    const dayNumber = props.date.getDate()
     return (
         <>
             <p>This is my day cell component.</p>
-            <p>My date prop says {props.date}</p>
+            <p>Day Number: {dayNumber}</p>
         </>
     )
 }

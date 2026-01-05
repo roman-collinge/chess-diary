@@ -6,7 +6,7 @@ function App() {
     <>
       <h1 className="text-4xl font-bold">Chess Diary</h1>
       <Button>Test Button</Button>
-      <DayCell date="05/01/2026" />
+      <DayCell date={new Date(2026, 12, 5)} />
     </>
   )
 }
