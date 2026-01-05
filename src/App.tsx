@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <h1>Chess Diary</h1>
-      <DayCell />
+      <DayCell date="05/01/2026" />
     </>
   )
 }
