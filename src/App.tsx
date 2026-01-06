@@ -1,13 +1,13 @@
-import DayCell from "./components/DayCell"
+import CalendarGrid from "./components/CalendarGrid"
 import { Button } from "./components/ui/button"
 
 function App() {
   return (
-    <>
-      <h1 className="text-4xl font-bold">Chess Diary</h1>
-      <Button>Test Button</Button>
-      <DayCell date={new Date(2026, 0, 5)} />
-    </>
+    <div className="p-8">
+      <h1 className="text-4xl font-bold mb-6">Chess Diary</h1>
+      <Button className="mb-6">Test Button</Button>
+      <CalendarGrid />
+    </div>
   )
 }
 
