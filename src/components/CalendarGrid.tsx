@@ -1,8 +1,9 @@
 import { useState } from "react"
 import DayCell from "./DayCell"
-import { Button } from "./ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 
+const currentYear = new Date().getFullYear()
+const years = Array.from({ length: 11 }, (_, i) => currentYear - 5 + i)
 const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
@@ -23,19 +24,35 @@ function CalendarGrid() {
     const dates = generateDates(year, month)
     return (
         <div>
-            <Select value={month.toString()} onValueChange={(value) => setMonth(parseInt(value))}>
-                <SelectTrigger className="w-[180px] mb-4">
-                    <SelectValue placeholder="Select month" />
-                </SelectTrigger>
-                <SelectContent>
-                    {months.map((monthName, index) => (
-                        <SelectItem key={index} value={index.toString()}>
-                            {monthName}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
-            </Select>
+            <div className="flex gap-2 mb-4">
+                {/* Year Select */}
+                <Select value={year.toString()} onValueChange={(value) => setYear(parseInt(value))}>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Select year" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {years.map((yearName) => (
+                            <SelectItem key={yearName} value={yearName.toString()}>
+                                {yearName}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
 
+                {/* Month Select */}
+                <Select value={month.toString()} onValueChange={(value) => setMonth(parseInt(value))}>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Select month" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {months.map((monthName, index) => (
+                            <SelectItem key={index} value={index.toString()}>
+                                {monthName}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
             <div className="grid grid-cols-7 gap-1 max-w-2xl">
                 {dates.map((date) => (
                     <DayCell key={date.toISOString()} date={date} />
